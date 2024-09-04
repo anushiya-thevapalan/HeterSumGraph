@@ -375,14 +375,14 @@ class MultiExampleSet(ExampleSet):
                     tfidf = sent_tfw[self.vocab.id2word(wid)]
                     tfidf_box = np.round(tfidf * 9)  # box = 10
                     # w2s s2w
-                    G.add_edge(wid2nid[wid], sent_nid,
+                    G.add_edges(wid2nid[wid], sent_nid,
                                data={"tffrac": torch.LongTensor([tfidf_box]), "dtype": torch.Tensor([0])})
-                    G.add_edge(sent_nid, wid2nid[wid],
+                    G.add_edges(sent_nid, wid2nid[wid],
                                data={"tffrac": torch.LongTensor([tfidf_box]), "dtype": torch.Tensor([0])})
             # s2d
             docid = sent2doc[i]
             docnid = docid2nid[docid]
-            G.add_edge(sent_nid, docnid, data={"tffrac": torch.LongTensor([0]), "dtype": torch.Tensor([2])})
+            G.add_edges(sent_nid, docnid, data={"tffrac": torch.LongTensor([0]), "dtype": torch.Tensor([2])})
 
         # add doc edges
         for i in range(article_num):
@@ -394,9 +394,9 @@ class MultiExampleSet(ExampleSet):
                     # w2d d2w
                     tfidf = doc_tfw[self.vocab.id2word(wid)]
                     tfidf_box = np.round(tfidf * 9)  # box = 10
-                    G.add_edge(wid2nid[wid], doc_nid,
+                    G.add_edges(wid2nid[wid], doc_nid,
                                data={"tffrac": torch.LongTensor([tfidf_box]), "dtype": torch.Tensor([0])})
-                    G.add_edge(doc_nid, wid2nid[wid],
+                    G.add_edges(doc_nid, wid2nid[wid],
                                data={"tffrac": torch.LongTensor([tfidf_box]), "dtype": torch.Tensor([0])})
 
         G.nodes[sentid2nid].data["words"] = torch.LongTensor(sent_pad)  # [N, seq_len]
