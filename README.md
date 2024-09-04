@@ -62,6 +62,17 @@ We also provide our checkpoints on **CNN/DailyMail**, **NYT50** and **Multi-News
 
 
 
+Trying with this
+```
+<!-- Modifying the word_emb_dim because of an error -->
+python train.py --word_emb_dim 100 --cuda --gpu 0 --data_dir datasets/multinews --cache_dir cache/MultiNews --embedding_path glove/glove.6B.100d.txt --model HDSG --save_root save/ --log_root logs/ --lr_descent --grad_clip -m 3
+
+<!-- CPU -->
+python train.py --word_emb_dim 100 --data_dir datasets/multinews --cache_dir cache/MultiNews --embedding_path glove/glove.6B.100d.txt --model HDSG --save_root save/ --log_root log/ --lr_descent --grad_clip -m 3
+
+
+We also provide our checkpoints on **CNN/DailyMail**, **NYT50** and **Multi-News** in [this link](https://drive.google.com/open?id=16wA_JZRm3PrDJgbBiezUDExYmHZobgsB). Besides, the outputs can be found [here](https://drive.google.com/open?id=1VArOyIbGO8ayW0uF8RcmN4Lh2DDtmcQz)(NYT50 has been removed due to its license).
+
 ## Test
 
 For evaluation, the command may like this:
