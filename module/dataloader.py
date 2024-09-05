@@ -250,7 +250,7 @@ class ExampleSet(torch.utils.data.Dataset):
             for wid in c.keys():
                 if wid in wid2nid.keys() and self.vocab.id2word(wid) in sent_tfw.keys():
                     tfidf = sent_tfw[self.vocab.id2word(wid)]
-                    tfidf_box = np.round(tfidf * 9)  # box = 10
+                    tfidf_box = int(np.round(tfidf * 9))  # box = 10
                     G.add_edges(wid2nid[wid], sent_nid,
                                 data={"tffrac": torch.LongTensor([tfidf_box]), "dtype": torch.Tensor([0])})
                     G.add_edges(sent_nid, wid2nid[wid],
