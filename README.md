@@ -81,6 +81,12 @@ For evaluation, the command may like this:
 python evaluation.py --cuda --gpu 0 --data_dir <data/dir/of/your/json-format/dataset> --cache_dir <cache/directory/of/graph/features> --embedding_path <glove_path>  --model [HSG|HDSG] --save_root <model path> --log_root <log path> -m 3 --test_model multi --use_pyrouge
 ```
 
+
+<!-- my test -->
+```
+python evaluation.py --data_dir datasets/multinews --cache_dir cache/MultiNews --embedding_path glove/glove.42B.300d.txt --model HDSG --save_root save/ --log_root log/ -m 3 --test_model multi --use_pyrouge
+```
+
 Some options:
 
 - *use_pyrouge*: whether to use pyrouge for evaluation. Default is **False** (which means rouge).

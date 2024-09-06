@@ -373,7 +373,7 @@ class MultiExampleSet(ExampleSet):
             for wid, cnt in c.items():
                 if wid in wid2nid.keys() and self.vocab.id2word(wid) in sent_tfw.keys():
                     tfidf = sent_tfw[self.vocab.id2word(wid)]
-                    tfidf_box = np.round(tfidf * 9)  # box = 10
+                    tfidf_box = int(np.round(tfidf * 9))  # box = 10
                     # w2s s2w
                     G.add_edges(wid2nid[wid], sent_nid,
                                data={"tffrac": torch.LongTensor([tfidf_box]), "dtype": torch.Tensor([0])})
@@ -393,7 +393,7 @@ class MultiExampleSet(ExampleSet):
                 if wid in wid2nid.keys() and self.vocab.id2word(wid) in doc_tfw.keys():
                     # w2d d2w
                     tfidf = doc_tfw[self.vocab.id2word(wid)]
-                    tfidf_box = np.round(tfidf * 9)  # box = 10
+                    tfidf_box = int(np.round(tfidf * 9))  # box = 10
                     G.add_edges(wid2nid[wid], doc_nid,
                                data={"tffrac": torch.LongTensor([tfidf_box]), "dtype": torch.Tensor([0])})
                     G.add_edges(doc_nid, wid2nid[wid],
